@@ -14,6 +14,14 @@ const Student = sequelize.define('student', {
 		autoIncrement: true,
 		primaryKey: true
 	},
+	firstName: {
+		type: Sequelize.STRING,
+		allowNull: false
+	},
+	lastName: {
+		type: Sequelize.STRING,
+		allowNull: false
+	},
 	email : {
 		type : Sequelize.STRING,
 		allowNull : false,
@@ -50,11 +58,11 @@ const Student = sequelize.define('student', {
 // 	}
 // })
 
-// sequelize.sync({ /* force: true */ })
-// 	.then( () => {
-// 		console.log('Students synchronized succesfully.')
-// 	}).catch( (error) => {
-// 		console.log(error)
-// 	})
+sequelize.sync({ /* force: true */ })
+	.then( () => {
+		console.log('Students synchronized succesfully.')
+	}).catch( (error) => {
+		console.log(error)
+	})
 
 module.exports = Student;

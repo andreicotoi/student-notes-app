@@ -22,11 +22,11 @@ const Note = sequelize.define('note', {
 	// se fac automat createdAt si updatedAt ca am timestamps
 })
 
-// sequelize.sync({ /* force: true */ })
-// 	.then( () => {
-// 		console.log('Notes synchronized succesfully.')
-// 	}).catch( (error) => {
-// 		console.log(error)
-// 	})
+sequelize.sync({ /* force: true */ })
+	.then( () => {
+		console.log('Notes synchronized succesfully.')
+	}).catch( (error) => {
+		console.log(error)
+	})
 
 module.exports = Note;

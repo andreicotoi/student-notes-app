@@ -28,6 +28,18 @@ const createCourse = async (req,res) => {
 	}
 }
 
+const createCourses = async (req, res) => {
+	try {
+		for (item in req.body) {
+			const course = await Course.create(item)
+			await course.save()
+		}
+		return res.status(200).json(req.body)
+	} catch (error) {
+		res.status(500).json(error)
+	}
+}
+
 const updateCourse = async (req, res) => {
 	try {
 		const course = await Course.findByPk(req.params.id)
@@ -54,4 +66,4 @@ const deleteCourse = async (req, res) => {
 	}
 }
 
-module.exports = { getAllCourses, getCourse, createCourse, updateCourse, deleteCourse }
+module.exports = { getAllCourses, getCourse, createCourse, createCourses, updateCourse, deleteCourse }

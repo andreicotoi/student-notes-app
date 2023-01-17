@@ -24,11 +24,11 @@ const Course = sequelize.define('course', {
 	}
 })
 
-// sequelize.sync({ /* force: true */ })
-// 	.then( () => {
-// 		console.log('Courses synchronized succesfully.')
-// 	}).catch( (error) => {
-// 		console.log(error)
-// 	})
+sequelize.sync({ /* force: true */ })
+	.then( () => {
+		console.log('Courses synchronized succesfully.')
+	}).catch( (error) => {
+		console.log(error)
+	})
 
 module.exports = Course;

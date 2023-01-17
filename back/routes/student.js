@@ -4,6 +4,7 @@ const router = express.Router()
 
 router.get("/", controller.getAllStuds)
 router.get("/:id", controller.getStud)
+router.post("/check", controller.check)
 router.post("/", controller.createStud)
 router.put("/:id", controller.updateStud)
 router.delete("/:id", controller.deleteStud)
