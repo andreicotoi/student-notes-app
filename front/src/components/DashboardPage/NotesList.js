@@ -1,14 +1,21 @@
-import * as React from 'react';
-import Table from '@mui/material/Table';
-import TableBody from '@mui/material/TableBody';
-import TableCell from '@mui/material/TableCell';
-import TableHead from '@mui/material/TableHead';
-import TableRow from '@mui/material/TableRow';
-import Title from './Title';
-
+import React, { useState, useEffect } from 'react'
+import axios from 'axios'
+import Table from '@mui/material/Table'
+import TableBody from '@mui/material/TableBody'
+import TableCell from '@mui/material/TableCell'
+import TableHead from '@mui/material/TableHead'
+import TableRow from '@mui/material/TableRow'
+import Title from './Title'
 export default function NotesList() {
-
+	const [notes, setNotes] = useState([])
 	
+	useEffect( () => {
+		const f = async () => {
+			let resp = await axios.get(`http://localhost:8080/api/notes`)
+			setNotes(resp.data)
+		}
+		f()
+	}, [notes])
 
 	return (
 		<React.Fragment>
@@ -16,21 +23,21 @@ export default function NotesList() {
 			<Table size="medium">
 				<TableHead>
 					<TableRow>
-						<TableCell>Date</TableCell>
+						<TableCell>Created</TableCell>
+						<TableCell>Last updated</TableCell>
 						<TableCell>Title</TableCell>
-						<TableCell align="center">Content</TableCell>
+						<TableCell colSpan={2}>Content</TableCell>
 					</TableRow>
 				</TableHead>
 				<TableBody>
-					{/* {rows.map((row) => (
+					{notes.map((row) => (
 						<TableRow key={row.id}>
-							<TableCell>{row.date}</TableCell>
-							<TableCell>{row.name}</TableCell>
-							<TableCell>{row.shipTo}</TableCell>
-							<TableCell>{row.paymentMethod}</TableCell>
-							<TableCell align="right">{`$${row.amount}`}</TableCell>
+							<TableCell>{row.createdAt}</TableCell>
+							<TableCell>{row.updatedAt}</TableCell>
+							<TableCell>{row.title}</TableCell>
+							<TableCell>{row.content}</TableCell>
 						</TableRow>
-					))} */}
+					))}
 				</TableBody>
 			</Table>
 		</React.Fragment>

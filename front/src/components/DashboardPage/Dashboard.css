@@ -24,3 +24,15 @@
 	text-overflow: ellipsis;
 }
 
+.sidebar {
+	max-width: min-content !important;
+	overflow: auto !important
+}
+
+#add-icon {
+	position: absolute;
+	margin-left: 5vh;
+	margin-top: 85vh;
+	cursor: pointer
+}
+

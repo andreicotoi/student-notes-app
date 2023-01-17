@@ -1,26 +1,28 @@
 import React, { Component } from 'react'
 import axios from 'axios'
+import Divider from '@mui/material/Divider';
 import ListItemButton from '@mui/material/ListItemButton'
 import ListItemIcon from '@mui/material/ListItemIcon'
 import ListSubheader from '@mui/material/ListSubheader'
 import NotesIcon from '@mui/icons-material/Notes'
-import AssignmentIcon from '@mui/icons-material/Assignment'
 import SettingsApplicationsIcon from '@mui/icons-material/SettingsApplications'
 
 class MainListItems extends Component {
 	constructor(){
 		super()
 		this.state = {
-		  	courses : []
+		  	courses : [],
+			notes: []
 		}
 	}
 
 	async componentDidMount() {
-		let resp = await axios.get(`http://localhost:8080/api/courses`)
+		let c = await axios.get(`http://localhost:8080/api/courses`)
+		let n = await axios.get(`http://localhost:8080/api/notes`)
 		this.setState({
-			courses: resp.data
+			courses: c.data,
+			notes: n.data
 		})
-		console.log(this.state.courses);
 	}
 
 	render() {
@@ -35,13 +37,26 @@ class MainListItems extends Component {
 							<ListItemIcon>
 								<NotesIcon />
 							</ListItemIcon>
-							<p className='overflow'>{`[${e.type}] ${e.name}`}</p>
+							<p className='overflow'>{`[${e.type.substring(0, 1).toUpperCase()}] ${e.name}`}</p>
+						</ListItemButton>
+					)
+				}
+				<Divider sx={{ my: 1 }} />
+				<ListSubheader component="div" inset>
+					Your notes
+				</ListSubheader>
+				{
+					this.state.notes.map( (e, i) => 
+						<ListItemButton key={i}>
+							<ListItemIcon>
+								<NotesIcon />
+							</ListItemIcon>
+							<p className='overflow'>{e.title}</p>
 						</ListItemButton>
 					)
 				}
 			</React.Fragment>
 		)
-			
 	}
 }
 export default MainListItems
@@ -57,35 +72,20 @@ export const manageCourses = (
 	</React.Fragment>
 )
 
-export const secondaryListItems = (
-	<React.Fragment>
-		<ListSubheader component="div" inset>
-			Your notes
-		</ListSubheader>
-		<ListItemButton>
-			<ListItemIcon>
-				<AssignmentIcon />
-			</ListItemIcon>
-			<p className='overflow'>Course 1 my notesadsadsa</p>
-		</ListItemButton>
-		<ListItemButton>
-			<ListItemIcon>
-				<AssignmentIcon />
-			</ListItemIcon>
-			<p className='overflow'>Course 2 - my notesadsadsa</p>
-		</ListItemButton>
-		<ListItemButton>
-			<ListItemIcon>
-				<AssignmentIcon />
-			</ListItemIcon>
-			<p className='overflow'>Course 5 note</p>
-		</ListItemButton>
-				<ListItemButton>
-			<ListItemIcon>
-				<AssignmentIcon />
-			</ListItemIcon>
-			<p className='overflow'>Course 6 note</p>
-		</ListItemButton>
-		
-	</React.Fragment>
-)
+// export const secondaryListItems = (
+// 	<React.Fragment>
+// 		<ListSubheader component="div" inset>
+// 			Your notes
+// 		</ListSubheader>
+// 		{
+// 			this.state.notes.map( (e, i) => 
+// 				<ListItemButton key={i}>
+// 					<ListItemIcon>
+// 						<NotesIcon />
+// 					</ListItemIcon>
+// 					<p className='overflow'>{`${e.title}`}</p>
+// 				</ListItemButton>
+// 			)
+// 		}
+// 	</React.Fragment>
+// )
