@@ -7,6 +7,26 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* * {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: 'Trebuchet MS';
+	font-size: medium;
+	border-radius: 5px;
+}
+
+html, body {
+	height: 100%;
+}
+
+body {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+} */
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
