@@ -6,6 +6,7 @@ import ListItemIcon from '@mui/material/ListItemIcon'
 import ListSubheader from '@mui/material/ListSubheader'
 import NotesIcon from '@mui/icons-material/Notes'
 import SettingsApplicationsIcon from '@mui/icons-material/SettingsApplications'
+import NoteIcon from '@mui/icons-material/Note'
 
 class MainListItems extends Component {
 	constructor(){
@@ -49,7 +50,7 @@ class MainListItems extends Component {
 					this.state.notes.map( (e, i) => 
 						<ListItemButton key={i}>
 							<ListItemIcon>
-								<NotesIcon />
+								<NoteIcon />
 							</ListItemIcon>
 							<p className='overflow'>{e.title}</p>
 						</ListItemButton>

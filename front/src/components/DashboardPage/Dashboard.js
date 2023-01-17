@@ -26,10 +26,11 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios'
 import { DataGrid } from '@mui/x-data-grid';
 import AddCircleIcon from '@mui/icons-material/AddCircle';
+import NoteIcon from '@mui/icons-material/Note';
 
 import './Dashboard.css'
 
-const drawerWidth = 240;
+const drawerWidth = 350;
 
 const AppBar = styled(MuiAppBar, {
 	shouldForwardProp: (prop) => prop !== 'open',
