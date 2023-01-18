@@ -30,7 +30,7 @@ import NoteIcon from '@mui/icons-material/Note';
 
 import './Dashboard.css'
 
-const drawerWidth = 350;
+const drawerWidth = 300
 
 const AppBar = styled(MuiAppBar, {
 	shouldForwardProp: (prop) => prop !== 'open',
